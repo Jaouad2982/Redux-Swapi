@@ -16,7 +16,7 @@ export  const FAILURE = "FAILURE";
 export const getInfo = ()=>dispatch =>{
 
     dispatch({type : FETCHING});
-    axios.get("https://swapi.co/api/ple").
+    axios.get("https://swapi.co/api/people").
     then(res=>{
         console.log(res)
         dispatch({type : SUCCESS, payload : res.data.results})

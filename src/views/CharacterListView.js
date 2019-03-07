@@ -11,23 +11,27 @@ class CharacterListView extends React.Component {
   componentDidMount=() =>{
     console.log(this.props.characters)
     // call our action
-    this.props.getInfo()
+   // this.props.getInfo();
+    
+  }
+
+  fetchData = (e)=>{
+    e.preventDefault();
+    this.props.getInfo();
   }
 
   render() {
-    console.log(this.props.characters)
-    if (this.props.isLoading) {
-      // return something here to indicate that you are fetching data
-      <div>
-        <h3>Data being fetched </h3>
-        <Loader type="Bars" color="#00BFFF" height="90" width="60" />
-      </div>
-    }
     return (
      
       <div className="CharactersList_wrapper">
+    
+      {this.props.isLoading && (
+        <Loader type="Ball-Triangle" color="#00BFFF" height="90" width="60" />
+      )}
         <CharacterList characters={this.props.characters} />
         {this.props.error && <p> Error :{this.props.error}</p>}
+        <button onClick={this.fetchData}
+        >Get List </button>
       </div>
     );
   }
