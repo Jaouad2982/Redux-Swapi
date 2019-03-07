@@ -12,16 +12,18 @@ export  const FAILURE = "FAILURE";
 
 
 
+
 export const getInfo = ()=>dispatch =>{
 
-    dispatch({type : FETCHING})
-    axios.get("https://swapi.co/api/people").
+    dispatch({type : FETCHING});
+    axios.get("https://swapi.co/api/ple").
     then(res=>{
         console.log(res)
-        dispatch({type : SUCCESS, payload : res.data})
+        dispatch({type : SUCCESS, payload : res.data.results})
+      
     })
     .catch(err=>{
         console.log(err);
-        dispatch ({type:FAILURE,payload : err.response.data.error.message})
+        dispatch ({type:FAILURE,payload : err.message})
     })
 }
